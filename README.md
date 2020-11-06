@@ -22,16 +22,9 @@ _Duration: Weekend_
 
 This app allows you to calculate the
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquam at massa in faucibus. Etiam volutpat, risus non mollis convallis, velit nisi pulvinar mi, eu faucibus orci nisi eget nibh. Integer a velit pretium, volutpat arcu eleifend, fringilla elit. Cras erat sapien, convallis venenatis tellus vitae, feugiat dictum felis.
-
-Suspendisse euismod volutpat aliquet. Maecenas vulputate mauris in pellentesque facilisis. Phasellus varius malesuada semper. Cras sollicitudin diam mollis maximus aliquam.
-
-To see the fully functional site, please visit: [DEPLOYED VERSION OF APP](www.heroku.com)
-
 ## Screen Shot
 
-Include one or two screen shots of your project here (optional). Remove if unused.
-
+![Wireframe](salary-calc-wireframe.png)
 
 
 ## Installation
@@ -51,15 +44,18 @@ How does someone use this application? Tell a user story here.
 
 ## Built With
 
-List technologies and frameworks here
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
-
-_Note, include this only if you have a license file. GitHub will generate one for you if you want!_
+This app was built using jQuery, HTML, and CSS.
 
 ## Acknowledgement
-Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality. (Thank your people)
+Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality.
+
+Special shout out to Vatti cohort group 2!!
+
+-[Joelle Kado](https://github.com/JoelleKado)
+
+-[Steven Maloney](https://github.com/sdeda1us)
+
+-[Zuber Abdikadir](https://github.com/zuberabdikadir)
 
 ## Support
 If you have suggestions or issues, please email me at [youremail@whatever.com](www.google.com)
