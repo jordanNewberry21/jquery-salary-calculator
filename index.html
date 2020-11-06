@@ -6,6 +6,7 @@
     <title>jQuery Monthly Salary Calculator</title>
     <script src="jQuery.js"></script>
     <script src="client.js"></script>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <header><h1>jQuery Monthly Salary Calculator</h1></header>
@@ -18,14 +19,21 @@
                 <input id="employee-id-number" placeholder="ID Number" type="number" />
                 <input id="job-title" placeholder="Job Title" type="text" />
                 <input id="annual-salary" placeholder="Annual Salary" type="number" />
-                <button id="btn-add">Add</button>
+                <button id="btn-add">Add Employee</button>
             </form>
         </section>
         <section>
             <h2>Employees</h2>
-            <ul id="employee-list">
-                <!-- jQuery will fill this in -->
-            </ul>
+            <table id="employee-list" style="width:100%">
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Employee ID</th>
+                  <th>Job Title</th>
+                  <th>Annual Salary</th>
+                </tr>
+                
+              </table>
         </section>
     </main>
 </body>
