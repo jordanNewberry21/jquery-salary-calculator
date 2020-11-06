@@ -3,11 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>jQuery Monthly Salary Calculator</title>
     <script src="jQuery.js"></script>
     <script src="client.js"></script>
 </head>
 <body>
-    
+    <header><h1>jQuery Monthly Salary Calculator</h1></header>
+    <main>
+        <section>
+            <h2>Add an Employee</h2>
+            <form>
+                <input id="first-name" placeholder="First Name" type="text" />
+                <input id="last-name" placeholder="Last Name" type="text" />
+                <input id="employee-id-number" placeholder="ID Number" type="number" />
+                <input id="job-title" placeholder="Job Title" type="text" />
+                <input id="annual-salary" placeholder="Annual Salary" type="number" />
+                <button id="btn-add">Add</button>
+            </form>
+        </section>
+        <section>
+            <h2>Employees</h2>
+            <ul id="employee-list">
+                <!-- jQuery will fill this in -->
+            </ul>
+        </section>
+    </main>
 </body>
 </html>
