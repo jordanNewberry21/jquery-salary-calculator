@@ -6,6 +6,7 @@ let lastName = '';
 let employeeID = '';
 let jobTitle = '';
 let annualSalary = '';
+ // new variable for calculating monthly salary cost
 
 function readyNow() {
     $('#btn-add').on('click', addEmployee)
@@ -14,7 +15,7 @@ function readyNow() {
 // that the way I had it was kind of trapping all of my values inside of the function
 // and then I couldn't use them, so I had to refactor it a bit and make another function to actually
 // get the information on the DOM in a usable way.
-function addEmployee(event) {  
+function addEmployee(event) {
     event.preventDefault(); // prevents refresh on click
     firstName = $('#first-name').val(); // grabbing values from input fields
     lastName = $('#last-name').val();
@@ -35,11 +36,12 @@ function addEmployee(event) {
     $('#job-title').val('');
     $('#annual-salary').val('');
     $('#employee-list').empty(); // I had to call this here to avoid posting the same information twice
+    $('#monthly-cost').empty();
+    calculateMonthly(employee);
     postEmployeeInfo(employee); // calling function to post employee information to the DOM
-    
 }
 
-function postEmployeeInfo (employee) {
+function postEmployeeInfo(employee) {
     $('#employee-list').append( // table header
         `<tr>
         <th>First Name</th>
@@ -60,4 +62,15 @@ function postEmployeeInfo (employee) {
     }
     $('#employee-list').append(`<tr></tr>`); // adds bottom row to the table for looks
     
+}
+
+function calculateMonthly (employee) {
+    let totalSalaries = 0;
+    for (let emp of employeeInfo) {
+        totalSalaries += emp.annualSalary/12;
+    }
+    $('#monthly-cost').append(totalSalaries.toFixed(2));
+    if (totalSalaries > 20000) {
+        $('#monthly-cost').toggleClass('red');
+    }
 }

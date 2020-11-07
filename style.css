@@ -1,9 +1,14 @@
 table, th, td {
     border: 1px solid black;
+    text-align: center;
   }
 
-#monthly-cost {
+#salary {
     float: right;
     padding-right: 20px;
     padding-top: 30px;
+}
+
+.red {
+  background-color: red;
 }
