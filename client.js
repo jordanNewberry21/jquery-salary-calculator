@@ -9,7 +9,8 @@ let annualSalary = '';
  // new variable for calculating monthly salary cost
 
 function readyNow() {
-    $('#btn-add').on('click', addEmployee)
+    $('#btn-add').on('click', addEmployee);
+    $(document).on('click', '#btn-remove', removeEmployee);
 }
 // I had this whole function set up pretty differently at first. Steven Maloney helped me realize
 // that the way I had it was kind of trapping all of my values inside of the function
@@ -49,6 +50,7 @@ function postEmployeeInfo(employee) {
         <th>Employee ID</th>
         <th>Job Title</th>
         <th>Annual Salary</th>
+        <th>Remove Employee</th>
         </tr>`); // appending the head of the table
     for (let emp of employeeInfo) { // this for loop is grabbing the values from the above function
         $('#employee-list').append( // and then adding them onto the DOM in the table format.
@@ -58,6 +60,7 @@ function postEmployeeInfo(employee) {
             <td>${emp.employeeID}</td>
             <td>${emp.jobTitle}</td>
             <td>${emp.annualSalary}</td>
+            <td><button id="btn-remove">Remove Employee</button></td>
             </tr>`);
     }
     $('#employee-list').append(`<tr></tr>`); // adds bottom row to the table for looks
@@ -65,12 +68,19 @@ function postEmployeeInfo(employee) {
 }
 
 function calculateMonthly (employee) {
-    let totalSalaries = 0;
+    let totalSalaries = 0; // I had to put this empty variable inside this function to get it to work how I wanted.
+    // I originally had it at the top along with my other global variables, but I ran into issues when trying to post
+    // this info to the DOM. It was like doubling the value when it shouldn't have. I understand that this is a scoping issue, but I 
+    // guess I don't quite understand why it was happening.
     for (let emp of employeeInfo) {
         totalSalaries += emp.annualSalary/12;
     }
     $('#monthly-cost').append(totalSalaries.toFixed(2));
     if (totalSalaries > 20000) {
-        $('#monthly-cost').toggleClass('red');
+        $('#monthly-cost').toggleClass('red', true);
     }
+}
+
+function removeEmployee () { // removeEmployee function is connected to the button being generated in my Table.
+    console.log('in remove button');
 }
