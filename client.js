@@ -6,7 +6,8 @@ let lastName = '';
 let employeeID = '';
 let jobTitle = '';
 let annualSalary = '';
- // new variable for calculating monthly salary cost
+let employeeIndex = 0; // empty element for giving my table rows a unique ID
+ 
 
 function readyNow() {
     $('#btn-add').on('click', addEmployee);
@@ -54,7 +55,7 @@ function postEmployeeInfo(employee) {
         </tr>`); // appending the head of the table
     for (let emp of employeeInfo) { // this for loop is grabbing the values from the above function
         $('#employee-list').append( // and then adding them onto the DOM in the table format.
-            `<tr>
+            `<tr> 
             <td>${emp.firstName}</td>
             <td>${emp.lastName}</td>
             <td>${emp.employeeID}</td>
@@ -77,10 +78,16 @@ function calculateMonthly (employee) {
     }
     $('#monthly-cost').append(totalSalaries.toFixed(2));
     if (totalSalaries > 20000) {
-        $('#monthly-cost').toggleClass('red', true);
+        $('#monthly-cost').toggleClass('red', true); // changes background to red when monthly salary total exceeds 20000
     }
 }
 
-function removeEmployee () { // removeEmployee function is connected to the button being generated in my Table.
-    console.log('in remove button');
+function removeEmployee (event) { // removeEmployee function is connected to the button being generated in my Table.
+    let mustConfirm = confirm('Are you sure you want to delete this employee?'); // Asking user for confirmation to remove the employee info
+    if (mustConfirm === true) {
+        $(this).parent().parent().remove(); 
+    } // it took me a while to figure this one out... I was trying to mess around with creating dynamic IDs
+     // for each table row as it's created, but that was a real headache and I couldn't quite figure it out.
+     // Then I kind of stumbled on this approach, and it was so simple and it worked perfectly.
+    
 }
