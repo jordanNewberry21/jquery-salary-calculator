@@ -1,12 +1,3 @@
-# Project Name
-
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
-
-
-
-## Description
-
-(View Raw will give you the markdown that you can copy to your repos!)
 
 
 ![MIT LICENSE](https://img.shields.io/github/license/jordanNewberry21/jquery-salary-calculator.svg?style=flat-square)
@@ -20,7 +11,7 @@
 
 _Duration: Weekend_
 
-This app allows you to calculate the
+This app allows you to calculate your monthly labor cost of all your employees based on their annual salary.
 
 ## Screen Shot
 
@@ -34,12 +25,9 @@ Open the index.html in the browser, and you're good to go.
 ## Usage
 How does someone use this application? Tell a user story here.
 
-1. xxx
-2. xxx
-3. xxx
-4. xxx
-5. xxx
-6. xxx
+1. Fill out all the input fields for each employee, click the Add Employee button when each field is filled.
+2. You should see your monthly total at the bottom of the screen after each employee is entered.
+3. If you make a mistake, just click the remove button to get rid of any information you don't want.
 
 
 ## Built With
@@ -58,4 +46,4 @@ Special shout out to Vatti cohort group 2!!
 -[Zuber Abdikadir](https://github.com/zuberabdikadir)
 
 ## Support
-If you have suggestions or issues, please email me at [youremail@whatever.com](www.google.com)
+If you have suggestions or issues, please email me at [jordan.newberry@gmail.com](www.google.com)
