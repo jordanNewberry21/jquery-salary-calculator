@@ -6,7 +6,7 @@ let lastName = '';
 let employeeID = '';
 let jobTitle = '';
 let annualSalary = '';
-let employeeIndex = 0; // empty element for giving my table rows a unique ID
+let totalSalaries = 0;
  
 
 function readyNow() {
@@ -37,24 +37,14 @@ function addEmployee(event) {
     $('#employee-id-number').val('');
     $('#job-title').val('');
     $('#annual-salary').val('');
-    $('#employee-list').empty(); // I had to call this here to avoid posting the same information twice
-    $('#monthly-cost').empty();
-    calculateMonthly(employee);
+    $('#employeeList').empty(); // I had to call this here to avoid posting the same information twice
     postEmployeeInfo(employee); // calling function to post employee information to the DOM
+    calculateMonthly();
 }
 
 function postEmployeeInfo(employee) {
-    $('#employee-list').append( // table header
-        `<tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Employee ID</th>
-        <th>Job Title</th>
-        <th>Annual Salary</th>
-        <th>Remove Employee</th>
-        </tr>`); // appending the head of the table
     for (let emp of employeeInfo) { // this for loop is grabbing the values from the above function
-        $('#employee-list').append( // and then adding them onto the DOM in the table format.
+        $('#employeeList').append( // and then adding them onto the DOM in the table format.
             `<tr> 
             <td>${emp.firstName}</td>
             <td>${emp.lastName}</td>
@@ -64,30 +54,36 @@ function postEmployeeInfo(employee) {
             <td><button id="btn-remove">Remove Employee</button></td>
             </tr>`);
     }
-    $('#employee-list').append(`<tr></tr>`); // adds bottom row to the table for looks
     
 }
 
-function calculateMonthly (employee) {
-    let totalSalaries = 0; // I had to put this empty variable inside this function to get it to work how I wanted.
+function calculateMonthly () {
+    console.log('in calculateMonthly');
+    totalSalaries = 0; // I had to put this empty variable inside this function to get it to work how I wanted.
     // I originally had it at the top along with my other global variables, but I ran into issues when trying to post
     // this info to the DOM. It was like doubling the value when it shouldn't have. I understand that this is a scoping issue, but I 
     // guess I don't quite understand why it was happening.
-    for (let emp of employeeInfo) {
-        totalSalaries += emp.annualSalary/12;
-    }
-    $('#monthly-cost').append(totalSalaries.toFixed(2));
+    for (let i=0; i<employeeList.rows.length; i++) { // for loop grabbing salary info directly from the table
+        totalSalaries += parseInt(Number(employeeList.rows[i].cells[4].innerHTML) /12);
+    } // the way I had my data set up I thought was the best way, but I was working with Carl
+    // in Zoom Sunday night and he had his set up to put the data directly into the table, which seemed more efficient.
+    // I didn't want to rewrite all my code, but Carl and Cassen helped me trouble shoot my way to this solution
+    // for the stretch goal.
+    $('#monthly-cost').empty();
+    $('#monthly-cost').append(`Total Monthly: $${totalSalaries}`);
     if (totalSalaries > 20000) {
         $('#monthly-cost').toggleClass('red', true); // changes background to red when monthly salary total exceeds 20000
     }
+    
 }
 
-function removeEmployee (event) { // removeEmployee function is connected to the button being generated in my Table.
+function removeEmployee () { // removeEmployee function is connected to the button being generated in my Table.
     let mustConfirm = confirm('Are you sure you want to delete this employee?'); // Asking user for confirmation to remove the employee info
     if (mustConfirm === true) {
         $(this).parent().parent().remove(); 
     } // it took me a while to figure this one out... I was trying to mess around with creating dynamic IDs
      // for each table row as it's created, but that was a real headache and I couldn't quite figure it out.
-     // Then I kind of stumbled on this approach, and it was so simple and it worked perfectly.
-    
+     // Then I kind of stumbled on this approach, it was so simple and it worked perfectly.
+     
+    calculateMonthly(); // re-calculate monthly
 }
